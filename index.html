@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pioneers Cafe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            coffee: {
+              50: "#fdf8f6", 100: "#f2e8e5", 200: "#eaddd7",
+              300: "#e0cec7", 400: "#d2bab0", 500: "#b08968",
+              600: "#9c6644", 700: "#7f5539", 800: "#65452d",
+              900: "#4a3319"
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body { font-family: "DM Sans", sans-serif; }
+    .font-serif-custom { font-family: "Playfair Display", serif; }
+    .page-section { animation: fadeIn .25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-bg {
+      background: linear-gradient(90deg, rgba(31,22,16,.82), rgba(31,22,16,.30)),
+      url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=85&w=1800") center/cover;
+    }
+  </style>
+</head>
+<body class="bg-coffee-50 text-stone-800 dark:bg-stone-950 dark:text-stone-100 transition-colors">
+  <header class="sticky top-0 z-40 border-b border-stone-200/80 bg-white/95 backdrop-blur dark:bg-stone-950/95 dark:border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <button onclick="switchPage('home')" class="flex items-center gap-3 text-left" aria-label="Pioneers Cafe home">
+        <span class="w-11 h-11 rounded-2xl bg-coffee-700 text-white grid place-items-center"><i class="fa-solid fa-mug-hot"></i></span>
+        <span><span class="block font-serif-custom font-bold text-xl leading-tight">Pioneers Cafe</span><span class="block text-xs tracking-widest uppercase text-coffee-600 dark:text-amber-400">Artisan Café</span></span>
+      </button>
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+        <button id="nav-home" onclick="switchPage('home')" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold">Home</button>
+        <button id="nav-about" onclick="switchPage('about')" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold">About</button>
+        <button id="nav-products" onclick="switchPage('products')" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold">Menu</button>
+        <button id="nav-gallery" onclick="switchPage('gallery')" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold">Gallery</button>
+        <button id="nav-contact" onclick="switchPage('contact')" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold">Contact</button>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl border border-stone-200 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800" aria-label="Toggle dark mode"><i id="darkModeIcon" class="fa-solid fa-moon"></i></button>
+        <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl border border-stone-200 dark:border-stone-700" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <nav id="mobileMenu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 px-4 pb-4" aria-label="Mobile navigation">
+      <div class="grid grid-cols-2 gap-2 pt-3">
+        <button onclick="switchPage('home');toggleMobileMenu()" class="mobile-nav px-4 py-3 rounded-xl text-left">Home</button>
+        <button onclick="switchPage('about');toggleMobileMenu()" class="mobile-nav px-4 py-3 rounded-xl text-left">About</button>
+        <button onclick="switchPage('products');toggleMobileMenu()" class="mobile-nav px-4 py-3 rounded-xl text-left">Menu</button>
+        <button onclick="switchPage('gallery');toggleMobileMenu()" class="mobile-nav px-4 py-3 rounded-xl text-left">Gallery</button>
+        <button onclick="switchPage('contact');toggleMobileMenu()" class="mobile-nav px-4 py-3 rounded-xl text-left">Contact</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 min-h-[70vh]">
+    
+    <section id="page-home" class="page-section space-y-14">
+      <div class="hero-bg min-h-[440px] md:min-h-[520px] rounded-[2rem] overflow-hidden flex items-center px-7 sm:px-12 md:px-16 py-12 text-white">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs uppercase tracking-[.2em] font-bold"><i class="fa-solid fa-seedling"></i> Small batch · Big comfort</span>
+          <h1 class="font-serif-custom text-4xl sm:text-6xl font-extrabold leading-tight mt-6">Your daily cup of <span class="text-amber-300">happiness.</span></h1>
+          <p class="mt-5 text-white/85 max-w-xl leading-7">Thoughtfully brewed coffee, freshly baked pastries, and a cozy place to slow down and stay awhile.</p>
+          <div class="flex flex-wrap gap-3 mt-8">
+            <button onclick="switchPage('products')" class="bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold px-6 py-3 rounded-xl transition">Explore our menu <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <button onclick="switchPage('about')" class="border border-white/60 hover:bg-white/10 font-semibold px-6 py-3 rounded-xl transition">Our story</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800"><i class="fa-solid fa-mug-hot text-2xl text-coffee-600 dark:text-amber-400"></i><h3 class="font-serif-custom text-xl font-bold mt-4">Crafted with care</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Every cup is prepared with attention, quality beans, and a little love.</p></div>
+        <div class="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800"><i class="fa-solid fa-wheat-awn text-2xl text-coffee-600 dark:text-amber-400"></i><h3 class="font-serif-custom text-xl font-bold mt-4">Freshly made</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Pair your favorite drink with pastries baked for a delicious day.</p></div>
+        <div class="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800"><i class="fa-solid fa-heart text-2xl text-coffee-600 dark:text-amber-400"></i><h3 class="font-serif-custom text-xl font-bold mt-4">A place to belong</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Come to catch up with friends, work quietly, or simply take a break.</p></div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3"><div><span class="text-coffee-600 dark:text-amber-400 font-bold text-xs uppercase tracking-widest">Signature selection</span><h2 class="text-3xl font-extrabold font-serif-custom mt-1">Featured This Week</h2></div><button onclick="switchPage('products')" class="text-sm font-semibold text-coffee-700 dark:text-amber-300 hover:underline">View full menu <i class="fa-solid fa-angle-right ml-1"></i></button></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="product-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-56 overflow-hidden relative"><img class="w-full h-full object-cover" src="16.jpg" alt="Caramel macchiato" loading="lazy"><span class="absolute top-3 right-3 px-3 py-1 bg-amber-400 text-stone-950 text-xs font-bold rounded-full">Best Seller</span></div>
+            <div class="p-5 flex-1"><h3 class="font-bold font-serif-custom text-xl">Signature Caramel Macchiato</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Steamed milk, vanilla syrup, espresso, and caramel drizzle.</p></div>
+            <div class="px-5 pb-5 flex items-center justify-between"><span class="font-bold text-lg text-coffee-700 dark:text-amber-400">₱180.00</span><button onclick="openProductModal('Signature Caramel Macchiato','₱180.00','Steamed milk, vanilla syrup, espresso, and caramel drizzle.','https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=700')" class="px-4 py-2 bg-coffee-700 hover:bg-coffee-800 text-white rounded-xl text-sm font-semibold">Quick view</button></div>
+          </article>
+          <article class="product-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-56 overflow-hidden"><img class="w-full h-full object-cover" src="2.jpg" alt="Matcha latte" loading="lazy"></div>
+            <div class="p-5 flex-1"><h3 class="font-bold font-serif-custom text-xl">Ceremonial Matcha Latte</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Japanese green tea whisked with your choice of milk.</p></div>
+            <div class="px-5 pb-5 flex items-center justify-between"><span class="font-bold text-lg text-coffee-700 dark:text-amber-400">₱200.00</span><button onclick="openProductModal('Ceremonial Matcha Latte','₱200.00','Japanese green tea whisked with your choice of milk.','https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=700')" class="px-4 py-2 bg-coffee-700 hover:bg-coffee-800 text-white rounded-xl text-sm font-semibold">Quick view</button></div>
+          </article>
+          <article class="product-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-56 overflow-hidden"><img class="" src="10.jpg" alt="Fresh croissant" loading="lazy"></div>
+            <div class="p-5 flex-1"><h3 class="font-bold font-serif-custom text-xl">Buttery Almond Croissant</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A flaky golden pastry with rich almond filling.</p></div>
+            <div class="px-5 pb-5 flex items-center justify-between"><span class="font-bold text-lg text-coffee-700 dark:text-amber-400">₱140.00</span><button onclick="openProductModal('Buttery Almond Croissant','₱140.00','A flaky golden pastry with rich almond filling.','https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700')" class="px-4 py-2 bg-coffee-700 hover:bg-coffee-800 text-white rounded-xl text-sm font-semibold">Quick view</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+   
+    <section id="page-about" class="page-section hidden space-y-10">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="rounded-[2rem] overflow-hidden min-h-[340px]"><img class="w-full h-full object-cover min-h-[340px]" src="1.jpg" alt="Warm and cozy café interior"></div>
+        <div><span class="text-coffee-600 dark:text-amber-400 font-bold text-xs uppercase tracking-widest">A little about us</span><h1 class="font-serif-custom text-4xl sm:text-5xl font-extrabold mt-3">Coffee brings us together.</h1><p class="mt-5 leading-7 text-stone-600 dark:text-stone-400">Pioneers Cafe began with a simple idea: make excellent coffee and create a welcoming space for everyone. We value quality ingredients, thoughtful service, and the small everyday moments that make life special.</p><p class="mt-4 leading-7 text-stone-600 dark:text-stone-400">Whether you're starting your morning, meeting a friend, or taking a well-deserved break, there's always a seat and a fresh cup waiting for you.</p><button onclick="switchPage('products')" class="mt-7 bg-coffee-700 hover:bg-coffee-800 text-white font-bold px-6 py-3 rounded-xl">Find your favorite <i class="fa-solid fa-arrow-right ml-2"></i></button></div>
+      </div>
+      <div class="rounded-3xl bg-coffee-100 dark:bg-stone-900 p-8 sm:p-10 text-center"><h2 class="font-serif-custom text-3xl font-bold">Our promise</h2><p class="max-w-2xl mx-auto mt-3 text-stone-600 dark:text-stone-400 leading-7">Good coffee, honest ingredients, friendly faces, and a comfortable place to pause. That's the Pioneers Cafe way.</p></div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-8 sm:p-10 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-coffee-100 dark:bg-stone-800 text-coffee-700 dark:text-amber-400 grid place-items-center text-2xl"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div>
+          <h2 class="font-serif-custom text-3xl font-bold mt-5">Our Mission</h2>
+          <p class="mt-4 leading-7 text-stone-600 dark:text-stone-400">To serve quality coffee, freshly prepared drinks, and delicious pastries with care and friendly service, while creating a welcoming space where people can connect, relax, and enjoy meaningful everyday moments.</p>
+        </article>
+        <article class="rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-8 sm:p-10 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-coffee-100 dark:bg-stone-800 text-coffee-700 dark:text-amber-400 grid place-items-center text-2xl"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+          <h2 class="font-serif-custom text-3xl font-bold mt-5">Our Vision</h2>
+          <p class="mt-4 leading-7 text-stone-600 dark:text-stone-400">To become a beloved community café known for great coffee, warm hospitality, and a cozy atmosphere—a place where every guest feels welcome and every visit brings a little comfort and happiness.</p>
+        </article>
+      </div>
+    </section>
+
+   
+    <section id="page-products" class="page-section hidden space-y-8">
+      <div class="text-center max-w-2xl mx-auto"><span class="text-coffee-600 dark:text-amber-400 font-bold text-xs uppercase tracking-widest">Made fresh for you</span><h1 class="font-serif-custom text-4xl sm:text-5xl font-extrabold mt-3">Our Menu</h1><p class="mt-3 text-stone-600 dark:text-stone-400">Explore handcrafted drinks, baked favorites, and café services.</p></div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button id="menu-btn-all" onclick="filterMenu('all')" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold">All items</button>
+        <button id="menu-btn-coffee" onclick="filterMenu('coffee')" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold">Coffee & drinks</button>
+        <button id="menu-btn-pastry" onclick="filterMenu('pastry')" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold">Pastries</button>
+        <button id="menu-btn-service" onclick="filterMenu('service')" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold">Services</button>
+      </div>
+      <p class="text-center text-xs text-stone-500 dark:text-stone-400">Prices are listed in Philippine pesos (₱). Menu items and availability may vary.</p>
+      <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="7.jpg" alt="Espresso in a small cup" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Classic Espresso</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱120</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Rich, balanced espresso with a smooth finish.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Classic Espresso','₱120.00','Rich, balanced espresso with a smooth finish.','https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="6.jpg" alt="Americano coffee" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Americano</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱130</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A bold espresso softened with hot water.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Americano','₱130.00','A bold espresso softened with hot water.','https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="4.jpg" alt="Cappuccino with milk foam" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Cappuccino</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱160</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Espresso topped with steamed milk and a soft layer of foam.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Cappuccino','₱160.00','Espresso topped with steamed milk and a soft layer of foam.','https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="5.jpg" alt="Iced latte in a glass" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Iced Latte</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱160</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Chilled espresso and creamy milk served over ice.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Iced Latte','₱160.00','Chilled espresso and creamy milk served over ice.','https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="3.jpg alt="Caramel coffee drink" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Caramel Macchiato</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱180</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Espresso, vanilla milk, and a sweet caramel drizzle.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Caramel Macchiato','₱180.00','Espresso, vanilla milk, and a sweet caramel drizzle.','https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="2.jpg" alt="Green matcha latte" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Matcha Latte</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱200</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Earthy green tea blended with smooth, creamy milk.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Matcha Latte','₱200.00','Earthy green tea blended with smooth, creamy milk.','https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="coffee">
+          <img class="h-52 w-full object-cover" src="17.jpg" alt="Chocolate mocha coffee" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Café Mocha</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱180</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Espresso and chocolate blended with steamed milk.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Café Mocha','₱180.00','Espresso and chocolate blended with steamed milk.','https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="8.jpg" alt="Golden croissant pastry" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Almond Croissant</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱140</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A golden, flaky croissant with a rich almond filling.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Almond Croissant','₱140.00','A golden, flaky croissant with a rich almond filling.','https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="9.jpg" alt="Chocolate brownies" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Chocolate Brownie</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱130</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A rich, fudgy chocolate treat with a soft center.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Chocolate Brownie','₱130.00','A rich, fudgy chocolate treat with a soft center.','https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="10.jpg" alt="Freshly baked bread" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Fresh Bread Selection</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱120</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A daily selection of freshly baked breads and rolls.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Fresh Bread Selection','₱120.00','A daily selection of freshly baked breads and rolls.','https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="11.jpg" alt="Cinnamon roll pastry" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Cinnamon Roll</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱150</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Soft swirled pastry with cinnamon sugar and a light glaze.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Cinnamon Roll','₱150.00','Soft swirled pastry with cinnamon sugar and a light glaze.','https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="12.jpg" alt="Chocolate muffins" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Chocolate Muffin</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱110</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A soft, fluffy muffin filled with chocolate flavor.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Chocolate Muffin','₱110.00','A soft, fluffy muffin filled with chocolate flavor.','https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="pastry">
+          <img class="h-52 w-full object-cover" src="13.jpg" alt="Assorted pastries" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=700'">
+          <div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Daily Pastry Box</h3><span class="font-bold text-coffee-700 dark:text-amber-400">₱350</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">A small assortment of the day’s baked favorites.</p></div>
+          <div class="px-5 pb-5"><button onclick="openProductModal('Daily Pastry Box','₱350.00','A small assortment of the day’s baked favorites.','https://images.unsplash.com/photo-1506459225024-1428097a7e18?auto=format&fit=crop&q=85&w=800')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">View details</button></div>
+        </article>
+        <article class="menu-card bg-white dark:bg-stone-900 rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 flex flex-col" data-category="service"><img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&q=85&w=800" alt="Coffee and pastries arranged for catering" loading="lazy"><div class="p-5 flex-1"><div class="flex justify-between gap-3"><h3 class="font-bold font-serif-custom text-xl">Private Event Catering</h3><span class="font-bold text-coffee-700 dark:text-amber-400">Inquire</span></div><p class="text-sm text-stone-600 dark:text-stone-400 mt-2 leading-6">Coffee and pastry catering for gatherings and special events.</p></div><div class="px-5 pb-5"><button onclick="switchPage('contact')" class="w-full py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-coffee-700 hover:text-white rounded-xl text-sm font-semibold">Ask about catering</button></div></article>
+      </div>
+    </section>
+
+   
+    <section id="page-gallery" class="page-section hidden space-y-8">
+      <div class="text-center max-w-2xl mx-auto"><span class="text-coffee-600 dark:text-amber-400 font-bold text-xs uppercase tracking-widest">Visual experience</span><h1 class="font-serif-custom text-4xl sm:text-5xl font-extrabold mt-3">Café Gallery</h1><p class="text-stone-600 dark:text-stone-400 mt-3">A peek at our cozy spaces, carefully poured coffee, and freshly baked treats.</p></div>
+      <div class="rounded-3xl overflow-hidden bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="1.jpg" alt="Cozy café interior" loading="lazy">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="7.jpg" alt="Coffee being prepared" loading="lazy">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="10.jpg" alt="Fresh baked bread" loading="lazy">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="14.jpg" alt="Iced coffee" loading="lazy">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="8.jpg" alt="Fresh pastry selection" loading="lazy">
+        <img class="w-full h-52 sm:h-72 object-cover rounded-2xl" src="15.jpg" alt="Barista coffee station" loading="lazy">
+      </div>
+    </section>
+
+ 
+    <section id="page-contact" class="page-section hidden space-y-8">
+      <div class="text-center max-w-2xl mx-auto"><span class="text-coffee-600 dark:text-amber-400 font-bold text-xs uppercase tracking-widest">We'd love to hear from you</span><h1 class="font-serif-custom text-4xl sm:text-5xl font-extrabold mt-3">Get in Touch</h1><p class="text-stone-600 dark:text-stone-400 mt-3">Questions, feedback, or event inquiries? Send us a message.</p></div>
+      <div class="grid md:grid-cols-5 gap-8">
+        <div class="md:col-span-2 bg-coffee-100 dark:bg-stone-900 rounded-3xl p-7 sm:p-8 space-y-6">
+          <div><h2 class="font-serif-custom text-2xl font-bold">Visit our café</h2><p class="text-sm text-stone-600 dark:text-stone-400 mt-2">We look forward to welcoming you.</p></div>
+          <div class="flex gap-4"><span class="text-coffee-700 dark:text-amber-400"><i class="fa-solid fa-location-dot"></i></span><div><h3 class="font-bold">Location</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-1">Blk 35 Lot 31, Camia Street, Sarmiento Homes, Barangay Muzon, San Jose del Monte (SJDM), Bulacan</p></div></div>
+          <div class="flex gap-4"><span class="text-coffee-700 dark:text-amber-400"><i class="fa-solid fa-clock"></i></span><div><h3 class="font-bold">Opening hours</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-1">Monday–Sunday · 8:00 AM–8:00 PM</p></div></div>
+          <div class="flex gap-4"><span class="text-coffee-700 dark:text-amber-400"><i class="fa-solid fa-envelope"></i></span><div><h3 class="font-bold">Email</h3><p class="text-sm text-stone-600 dark:text-stone-400 mt-1">pioneerscafe@gmail.com</p></div></div>
+        </div>
+        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="md:col-span-3 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-7 sm:p-8 space-y-5">
+          <div><label for="contactName" class="block text-sm font-semibold mb-2">Your name</label><input id="contactName" name="name" required class="w-full rounded-xl border border-stone-300 dark:border-stone-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-coffee-500" placeholder="Enter your name"></div>
+          <div><label for="contactEmail" class="block text-sm font-semibold mb-2">Email address</label><input id="contactEmail" name="email" type="email" required class="w-full rounded-xl border border-stone-300 dark:border-stone-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-coffee-500" placeholder="you@example.com"></div>
+          <div><label for="contactMessage" class="block text-sm font-semibold mb-2">Message</label><textarea id="contactMessage" name="message" rows="5" required class="w-full rounded-xl border border-stone-300 dark:border-stone-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-coffee-500 resize-y" placeholder="How can we help?"></textarea></div>
+          <button type="submit" class="w-full bg-coffee-700 hover:bg-coffee-800 text-white font-bold px-6 py-3 rounded-xl">Send message <i class="fa-solid fa-paper-plane ml-2"></i></button>
+          <p class="text-xs text-stone-500 dark:text-stone-400">Demo form: messages are not sent to a real server.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-stone-200 dark:border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-stone-500 dark:text-stone-400">
+      <p>© <span id="year"></span> Pioneers Cafe. All rights reserved.</p>
+      <p>Made with <i class="fa-solid fa-heart text-coffee-600 dark:text-amber-400"></i> and a good cup of coffee.</p>
+    </div>
+  </footer>
+
+
+  <div id="productModal" class="hidden fixed inset-0 z-50 bg-black/60 p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this) closeProductModal()">
+    <div class="w-full max-w-lg bg-white dark:bg-stone-900 rounded-3xl overflow-hidden shadow-2xl relative">
+      <button onclick="closeProductModal()" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-black/80" aria-label="Close product details"><i class="fa-solid fa-xmark"></i></button>
+      <img id="modalImg" src="" alt="" class="w-full h-60 object-cover">
+      <div class="p-6"><h2 id="modalTitle" class="font-serif-custom text-2xl font-bold"></h2><p id="modalDesc" class="text-stone-600 dark:text-stone-400 mt-3 leading-6"></p><div class="flex items-center justify-between mt-6"><span id="modalPrice" class="text-xl font-bold text-coffee-700 dark:text-amber-400"></span><button onclick="closeProductModal()" class="px-5 py-2.5 bg-coffee-700 hover:bg-coffee-800 text-white rounded-xl font-semibold">Done</button></div></div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 translate-y-20 opacity-0 transition-all duration-300 z-[60] max-w-[90vw] rounded-xl bg-stone-900 text-white px-5 py-3 shadow-xl" role="status" aria-live="polite"><span id="toastMsg"></span></div>
+
+  <script>
+    const pages = ["home", "about", "products", "gallery", "contact"];
+
+    function switchPage(pageId) {
+      if (!pages.includes(pageId)) return;
+      pages.forEach((page) => {
+        const section = document.getElementById(`page-${page}`);
+        const nav = document.getElementById(`nav-${page}`);
+        if (section) section.classList.toggle("hidden", page !== pageId);
+        if (nav) {
+          nav.className = "nav-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all " +
+            (page === pageId
+              ? "text-coffee-700 dark:text-amber-300 bg-coffee-100 dark:bg-stone-800"
+              : "text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800");
+        }
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle("dark");
+      try { localStorage.setItem("pioneers_dark", String(isDark)); } catch (error) {}
+      updateDarkModeIcon(isDark);
+      showToast(isDark ? "Dark mode enabled" : "Light mode enabled");
+    }
+
+    function updateDarkModeIcon(isDark) {
+      const icon = document.getElementById("darkModeIcon");
+      icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    }
+
+    function filterMenu(category) {
+      document.querySelectorAll(".menu-filter-btn").forEach((button) => {
+        button.className = "menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700 transition-all";
+      });
+      const activeButton = document.getElementById(`menu-btn-${category}`);
+      if (activeButton) activeButton.className = "menu-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-coffee-700 text-white shadow-sm transition-all";
+
+      document.querySelectorAll(".menu-card").forEach((card) => {
+        const matches = category === "all" || card.dataset.category === category;
+        card.classList.toggle("hidden", !matches);
+      });
+    }
+
+    function openProductModal(title, price, desc, img) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalPrice").textContent = price;
+      document.getElementById("modalDesc").textContent = desc;
+      document.getElementById("modalImg").src = img;
+      document.getElementById("modalImg").alt = title;
+      document.getElementById("productModal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeProductModal() {
+      document.getElementById("productModal").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const message = document.getElementById("contactMessage").value.trim();
+
+      if (!name || !email || !message) {
+        showToast("Please fill in all required fields.");
+        return;
+      }
+      showToast(`Thank you, ${name}! Your message has been received in this demo.`);
+      document.getElementById("contactForm").reset();
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").textContent = message;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add("translate-y-20", "opacity-0"), 3200);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeProductModal();
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      let savedDark = false;
+      try { savedDark = localStorage.getItem("pioneers_dark") === "true"; } catch (error) {}
+      document.documentElement.classList.toggle("dark", savedDark);
+      updateDarkModeIcon(savedDark);
+      document.getElementById("year").textContent = new Date().getFullYear();
+      switchPage("home");
+      filterMenu("all");
+    });
+  </script>
+</body>
+</html>
